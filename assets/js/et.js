@@ -1,19 +1,58 @@
-$( document ).ready(function() {
+var manetInstance = "http://manet.herokuapp.com/?"
+loadPad('https://g-u-i.me/pad/p/et-et.org/export/txt', '#main-text');
 
-  var textHtml = marked(getText('https://g-u-i.me/pad/p/et-et.org/export/txt'))
-  $("#main-text").html(textHtml);
+function loadPad(url, selector, callback){
+  $.ajax({
+    url: 'https://g-u-i.me/pad/p/et-et.org/export/txt',
+    type: 'get',
+    dataType: 'html',
+    async: true,
+    success: function(data){
+      $(selector).html(marked(data))
+      textify(selector);
+    }
+  });
+}
 
-});
+function textify(selector){
 
-function getText(myUrl){
-    var result = null;
-    $.ajax( { url: myUrl,
-              type: 'get',
-              dataType: 'html',
-              async: false,
-              success: function(data) { result = data; }
-            }
-    );
-    FileReady = true;
-    return result;
+  $(selector+ ' a[href^="http://"]')
+    .not('a[href*='+ window.location.hostname +']')
+    .attr('target','_blank')
+    .each(function(i) {
+
+      var small = jQuery.param({
+        url:$(this).attr('href'),
+        width:120,
+        height:80,
+        zoom:0.1,
+        clipRect:"0,0,120,100"
+      });
+
+      var cur = this;
+
+      setTimeout(function(){
+        $(cur).prepend('<img class="site" src="'+manetInstance+small+'"> ')
+      }, (i+1) *250 )
+
+      $(this).mouseover(function(){
+
+        var small = jQuery.param({
+          url:$(this).attr('href'),
+          width:360,
+          height:640,
+          clipRect:'0,0,360,640',
+          zoom:0.33,
+          format:'jpeg'
+        });
+
+        console.log($(this).offset())
+
+        $("#preview img").attr('src',manetInstance+small).css("margin-top",
+          Math.max(0, $(this).offset()['top'] - $("#preview img").height()/3)
+        ).removeClass("hidden")
+
+      })
+
+    });
 }
