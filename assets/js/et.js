@@ -38,10 +38,10 @@ function textify(selector){
 
         var small = jQuery.param({
           url:$(this).attr('href'),
-          width:360,
-          height:640,
-          clipRect:'0,0,360,640',
-          zoom:0.33,
+          width:540,
+          height:960,
+          clipRect:'0,0,960,540',
+          zoom:0.5,
           format:'jpeg'
         });
 
