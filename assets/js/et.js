@@ -33,7 +33,7 @@ function textify(selector){
       var cur = this;
 
       setTimeout(function(){
-        $(cur).prepend('<img class="site" src="'+manetInstance+small+'">&nbsp;')
+        $(cur).prepend('<img class="site" src="'+manetInstance+small+'">')
       }, (i+1) *250 )
 
       $(this).mouseover(function(){
@@ -47,8 +47,6 @@ function textify(selector){
           format:'jpeg',
           delay: 1500
         });
-
-        console.log($(this).offset())
 
         $("#preview img")
         .attr('src',manetInstance+small).css("margin-top",
