@@ -25,7 +25,9 @@ function textify(selector){
         width:120,
         height:80,
         zoom:0.1,
-        clipRect:"0,0,120,100"
+        clipRect:"0,0,120,100",
+        format:'jpeg',
+        delay: 1500
       });
 
       var cur = this;
@@ -42,12 +44,14 @@ function textify(selector){
           height:960,
           clipRect:'0,0,540,960',
           zoom:0.5,
-          format:'jpeg'
+          format:'jpeg',
+          delay: 1500
         });
 
         console.log($(this).offset())
 
-        $("#preview img").attr('src',manetInstance+small).css("margin-top",
+        $("#preview img")
+        .attr('src',manetInstance+small).css("margin-top",
           Math.max(0, $(this).offset()['top'] - $("#preview img").height()/3)
         ).removeClass("hidden")
 
