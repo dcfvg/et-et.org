@@ -33,7 +33,7 @@ function textify(selector){
       var cur = this;
 
       setTimeout(function(){
-        $(cur).prepend('<img class="site" src="'+manetInstance+small+'">')
+        $(cur).prepend('<img class="site" src="'+manetInstance+small+'"> ')
       }, (i+1) *250 )
 
       $(this).mouseover(function(){
