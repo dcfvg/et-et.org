@@ -40,7 +40,7 @@ function textify(selector){
           url:$(this).attr('href'),
           width:540,
           height:960,
-          clipRect:'0,0,960,540',
+          clipRect:'0,0,540,960',
           zoom:0.5,
           format:'jpeg'
         });
