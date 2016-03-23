@@ -17,7 +17,6 @@ function loadPad(url, selector, callback){
 function textify(selector){
 
   $(selector+ ' a[href^="http://"]')
-    .not('a[href*='+ window.location.hostname +']')
     .attr('target','_blank')
     .each(function(i) {
 
