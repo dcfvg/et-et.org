@@ -1,4 +1,4 @@
-var manetInstance = "http://manet.herokuapp.com/?"
+var manetInstance = "http://manet.medialab.sciences-po.fr/?"
 loadPad('https://g-u-i.me/pad/p/et-et.org/export/txt', '#main-text');
 
 function loadPad(url, selector, callback){
